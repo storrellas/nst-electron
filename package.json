@@ -20,6 +20,10 @@
     "electron": "^21.3.0"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "excel4node": "^1.8.0",
+    "exceljs": "^4.3.0",
+    "jquery": "^3.6.1",
+    "read-excel-file": "^5.5.3"
   }
 }
