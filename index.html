@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
-    <title>Nestor Piccini</title>
+    <title>NTS</title>
   </head>
   <body>
-    <h1>XLSX Processor</h1>
+    <img src="./img/NTSLogo.png" style="height: 50px"></img>
+    <div style="display: flex;">
+      
+      <h1>NTS - XLSX Processor</h1>
+    </div>
+    
     <div>Please Select the file to be exported</div>
-    <div>
+    <div style="display:flex">
       <input id="input_file" type="file"></input>
     </div>
     <div style="margin-top: 10px">
@@ -19,6 +24,7 @@
       <div id="div_status">Status: -</div>
       <div id="div_output_filename">Output filename: -</div>
     </div>
+    
     
     <script>
       document.getElementById('button_export').addEventListener('click', async () => {
