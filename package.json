@@ -24,6 +24,7 @@
     "excel4node": "^1.8.0",
     "exceljs": "^4.3.0",
     "jquery": "^3.6.1",
-    "read-excel-file": "^5.5.3"
+    "read-excel-file": "^5.5.3",
+    "xlsx-chart": "^0.4.3"
   }
 }
