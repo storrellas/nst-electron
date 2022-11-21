@@ -3,16 +3,37 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
     <title>Nestor Piccini</title>
   </head>
   <body>
-    <h1>Please Select the file to be exported</h1>
-    <input type="file"></input>
-    <button id="export">Export</button>
+    <h1>XLSX Processor</h1>
+    <div>Please Select the file to be exported</div>
+    <div>
+      <input id="input_file" type="file"></input>
+    </div>
+    <div style="margin-top: 10px">
+      <button id="button_export">Export</button>
+    </div>    
+    <div style="margin-top: 10px">
+      <div id="div_status">Status: -</div>
+      <div id="div_output_filename">Output filename: -</div>
+    </div>
+    
+    <script>
+      document.getElementById('button_export').addEventListener('click', async () => {
+        console.log("about to export")
+        const full_path = document.getElementById('input_file').files[0].path
+        const launch_result = await window.piccini.launch(full_path)
+        document.getElementById('div_status').innerHTML = 
+          `Status: ${launch_result.rows} rows were read`
+        document.getElementById('div_output_filename').innerHTML = 
+          `Output filename: ${launch_result.filename}`
+      })
 
-    <script src="renderer.js"></script>
+    </script>
 
+    <!-- <script src="renderer.js"></script> -->
   </script>
   </body>
 </html>

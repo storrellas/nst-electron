@@ -1,5 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('piccini', {
-  launch: () => ipcRenderer.invoke('piccini:launch')
+  launch: (full_path) => {
+    return ipcRenderer.invoke('piccini:launch', full_path)
+  }
 })
