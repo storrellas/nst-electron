@@ -32,7 +32,10 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-  win.webContents.openDevTools()
+  if( process.env.PLATFORM == 'DEV'){
+    win.webContents.openDevTools()
+  }
+  
   win.loadFile('index.html')
 
   ipcMain.handle('piccini:launch', async (event, full_path) => {
@@ -48,7 +51,14 @@ const createWindow = () => {
     const workbook_output = createWorkbook(ExcelJS)
     const worksheet_output = workbook_output.addWorksheet('Foglio1');
 
-    //const [columns] = ExcelJS.utils.sheet_to_json(worksheet_input, { header: 1 });
+
+    const row = worksheet_input.getRow(1);
+    console.log("row ", row.values)
+    // worksheet.columns = [
+    //   { header: 'Id', key: 'id', width: 10 },
+    //   { header: 'Name', key: 'name', width: 32 },
+    //   { header: 'D.O.B.', key: 'DOB', width: 10, outlineLevel: 1 }
+    // ];
 
     // fetch sheet by name
 
@@ -58,11 +68,12 @@ const createWindow = () => {
 
       worksheet_input.eachRow((row, rowNumber) => {
         // Increase the number of row
-        worksheet_output.addRow(row);
+        worksheet_output.addRow(row.values);
+        
 
-        console.log('Row ' + rowNumber + ' = ' + JSON.stringify(row.values));
+        //console.log('Row ' + rowNumber + ' = ' + JSON.stringify(row.values));
 
-        if( n_rows == rowNumber ) return resolve(row_current)
+        if( n_rows == rowNumber ) return resolve(rowNumber)
       });
       
     })
