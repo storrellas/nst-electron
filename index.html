@@ -12,7 +12,10 @@
       
       <h1>NTS - XLSX Processor</h1>
     </div>
-    
+    <div style="height: 200px; overflow: hidden;">
+      <tab-group></tab-group>
+    </div>
+
     <div>Please Select the file to be exported</div>
     <div style="display:flex">
       <input id="input_file" type="file"></input>
@@ -34,7 +37,7 @@
       </div>
     </div>
     
-    
+    <script src="node_modules/electron-tabs/dist/electron-tabs.js"></script>
     <script>
       document.getElementById('button_export').addEventListener('click', async () => {
         console.log("about to export")
@@ -45,6 +48,34 @@
         document.getElementById('div_output_filename').innerHTML = 
           `Output filename: ${launch_result.filename}`
       })
+
+
+      // Select tab-group
+      const tabGroup = document.querySelector("tab-group");
+
+      // Setup the default tab which is created when the "New Tab" button is clicked
+      // tabGroup.setDefaultTab({
+      //   title: "New Page",
+      //   src: "path/to/new-page.html",
+      //   active: true
+      // });
+
+      // Do stuff
+      const importTab = tabGroup.addTab({
+        closable: false,
+        title: "Import",
+        src: "./tabImport.html"
+      });
+      const pos = importTab.getPosition();
+      importTab.activate()
+
+      console.log("Tab position is " + pos);
+      const batchProcessingTab = tabGroup.addTab({
+        closable: false,
+        title: "Batch Processing",
+        src: "./tabBatchProcessing.html"
+      });
+
 
     </script>
 

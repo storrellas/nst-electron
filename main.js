@@ -22,15 +22,18 @@ const writeWorkbook = async (workbook_output, full_path) => {
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 600,
-    height: 400,
+    autoHideMenuBar: true,
+    width: 800,
+    height: 800,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,
       nodeIntegrationInWorker: true,                                                  
       enableRemoteModule: true,
-      preload: path.join(__dirname, 'preload.js')
-    }
+      preload: path.join(__dirname, 'preload.js'),
+      webviewTag: true
+    },
+    icon: './img/NTSLogo.png'
   })
   if( process.env.PLATFORM == 'DEV'){
     win.webContents.openDevTools()

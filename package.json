@@ -1,5 +1,5 @@
 {
-  "name": "piccini",
+  "name": "nst",
   "version": "1.0.0",
   "description": "MyDescription",
   "main": "main.js",
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "electron-tabs": "^1.0.1",
     "excel4node": "^1.8.0",
     "exceljs": "^4.3.0",
     "jquery": "^3.6.1",
